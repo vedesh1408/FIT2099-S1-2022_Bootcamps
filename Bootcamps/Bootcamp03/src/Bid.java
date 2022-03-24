@@ -2,11 +2,11 @@ public class Bid {
 
     private int bidId;
     private Client client;
-    private int price;
+    private double price;
     private String bidDate;
 
     // Constructors
-    public Bid(int bidId, Client client, int price, String bidDate) {
+    public Bid(int bidId, Client client, double price, String bidDate) {
         this.bidId = bidId;
         this.client = client;
         this.price = price;
@@ -30,11 +30,11 @@ public class Bid {
         this.client = client;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return this.price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
