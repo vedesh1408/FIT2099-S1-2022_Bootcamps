@@ -57,7 +57,7 @@ public class CarAuction {
         Client newClient = new Client(cId, cFirstName, cLastName);
 
         System.out.print("Enter Bid price: ");
-        int bidPrice = scanner.nextInt();
+        double bidPrice = scanner.nextDouble();
         System.out.print("Enter Bid date: ");
         String bidDate = scanner.next();
 
