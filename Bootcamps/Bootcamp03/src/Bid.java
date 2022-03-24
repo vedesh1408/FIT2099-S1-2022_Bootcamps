@@ -13,7 +13,7 @@ public class Bid {
         this.bidDate = bidDate;
     }
 
-    // setters and getters
+    // setters and getters for each attributes
     public int getBidId() {
         return this.bidId;
     }
