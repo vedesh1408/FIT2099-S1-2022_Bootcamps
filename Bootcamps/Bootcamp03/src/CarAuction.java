@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class CarAuction {
     //Car Data type Array
-    Car[] cars = new Car[3];
+    ArrayList<Car> cars = new ArrayList<Car>();
 
     public void printStatus(){
         System.out.println("Welcome to FIT2099 Car Auction Systems");
@@ -16,16 +18,16 @@ public class CarAuction {
     }
     //Task 4
     public void createCars(){
-       cars[0] = new Car ("Audi", "TT",2014);
-       cars[1] = new Car("BMW", "X7",2017);
-       cars[2] = new Car("Chevrolet", "Corvette",2020);
+        cars.add(new Car("Audi", "TT",2014));
+        cars.add(new Car("BMW", "X7",2017));
+        cars.add(new Car("Chevrolet", "Corvette",2020));
 
     }
 
     public void displayCar(){
 
-        for (int i=0; i<cars.length; i++){
-            System.out.println("Car (" + (i+1) + ") " + cars[i].getCarDescription());
+        for (int i=0; i<cars.size(); i++){
+            System.out.println("Car (" + (i+1) + ") " + cars.get(i).description());
         }
     }
 }

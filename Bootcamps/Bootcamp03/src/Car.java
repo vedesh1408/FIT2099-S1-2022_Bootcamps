@@ -5,14 +5,14 @@ public class Car {
     private String model;
     private int modelYear;
     //Constructor
-    public Car(String _make, String _model, int _modelYear){
-        this.make = _make;
-        this.model=_model;
-        this.modelYear=_modelYear;
+    public Car(String newMake, String newModel, int newModelYear){
+        this.make = newMake;
+        this.model=newModel;
+        this.modelYear=newModelYear;
     }
     //Methods
 
-    public String getCarDescription(){
+    public String description(){
 
         return ("MY" + modelYear + " " + make + " " + model);
 
