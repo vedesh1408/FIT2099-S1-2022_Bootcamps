@@ -1,0 +1,13 @@
+1. In the CarAuction class, a method clientList which contain 3 nested for loops must be created
+
+2. Before the 1st loop, an arraylist with integer data type is created. The arraylist will be used to store all clientIds which
+   have already been printed out.
+
+3. The 1st for loop will loop over the cars arraylist for i = 0 to i < cars.size() times. 
+
+4. The 2nd for loop iterates over every bid of each class in the cars arraylist for  j = 0 to j < cars.get(i).bids.size()
+
+5. In the 2nd loop, the clientId is printed using the description() method and it is added to the arraylist created in step 2
+
+6. The clientId is checked against existing elements of the arraylist using the 3rd for loop. If the clientId is not present there, it
+   is printed out to the string, else it is ignored

@@ -83,4 +83,6 @@ public class CarAuction {
 
 
     }
+
+    // Task 8 is in text file on git
 }

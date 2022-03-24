@@ -1,0 +1,24 @@
+Integer
+
+Advantages: 
+1. primitive data type
+2. can used functions such as toString() to convert the integer to string
+
+Disadvantages:
+1. Might be difficult to concatenate
+2. If clientId includes some character other than integer, the program will fail
+
+
+String
+
+Advantages:
+1. We can include any character we want 
+
+Disadvantages:
+1. As it is not a primitive data type, it might consume more memory space
+
+
+Decision:
+I have decided to use integer because it consumes less memory space as it is primitve, 
+and it is easier to work with; for example when comparing. An integer can be compared directly
+whereas a string needs to be compared using String.equals()
