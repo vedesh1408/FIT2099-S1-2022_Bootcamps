@@ -27,15 +27,5 @@ public class Client {
     public String description(){
         return (clientId + " " + firstName + " " + lastName);
     }
-    public int getClientId() {
-        return clientId;
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-
 
 }

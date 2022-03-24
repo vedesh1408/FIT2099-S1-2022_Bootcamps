@@ -15,7 +15,7 @@ public class Bid {
 
     // setters and getters for each attributes
     public int getBidId() {
-        return this.bidId;
+        return bidId;
     }
 
     public void setBidId(int bidId) {
@@ -23,7 +23,7 @@ public class Bid {
     }
 
     public Client getClient() {
-        return this.client;
+        return client;
     }
 
     public void setClient(Client client) {
@@ -31,7 +31,7 @@ public class Bid {
     }
 
     public double getPrice() {
-        return this.price;
+        return price;
     }
 
     public void setPrice(double price) {
@@ -39,7 +39,7 @@ public class Bid {
     }
 
     public String getBidDate() {
-        return this.bidDate;
+        return bidDate;
     }
 
     public void setBidDate(String bidDate) {

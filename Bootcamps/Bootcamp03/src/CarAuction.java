@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CarAuction {
     //Car Data type Array
@@ -25,13 +26,45 @@ public class CarAuction {
         Car cr3 = (new Car("Chevrolet", "Corvette", 2020));
 
         // creating clients and bids
-        Client c1 = new Client(Utils.nextID(), "Sam", "Johnson");
-        Client c2 = new Client(Utils.nextID(), "Robert", "Jones");
-        cr1.addBid(c1, 10000.25, "20/03/2022");
-        cr1.addBid(c2, 10500.25, "24/03/2022");
+//        Client c1 = new Client(Utils.nextID(), "Sam", "Johnson");
+//        Client c2 = new Client(Utils.nextID(), "Robert", "Jones");
+//        Client c3 = new Client(Utils.nextID(), "John", "Doe");
+//
+//        Bid b1 = new Bid(Utils.nextID(), c1, 100000, "20/03/2022");
+//        Bid b2 = new Bid(Utils.nextID(), c2, 100250, "24/03/2022");
+//        Bid b3 = new Bid(Utils.nextID(), c3, 101250, "18/03/2022");
+//
+//        cr1.addBid(c1, b1.getPrice(), b1.getBidDate());
+//        cr1.addBid(c2, b2.getPrice(), b2.getBidDate());
+//        cr2.addBid(c3, b3.getPrice(), b3.getBidDate());
+//
+//        cr1.addBid(c1, 10000.25, "20/03/2022");
+//        cr1.addBid(c2, 10500.25, "24/03/2022");
+//        cr2.addBid(c3, 120000.75, "18/03/2022");
+//
         cars.add(cr1);
         cars.add(cr2);
         cars.add(cr3);
+
+        Scanner scanner = new  Scanner(System.in);
+        System.out.print("Enter Client First Name: ");
+        String cFirstName = scanner.next();
+        System.out.print("Enter Client Last Name: ");
+        String cLastName = scanner.next();
+        System.out.print("Enter Client ID: ");
+        int cId = scanner.nextInt();
+
+        Client newClient = new Client(cId, cFirstName, cLastName);
+
+        System.out.print("Enter Bid price: ");
+        int bidPrice = scanner.nextInt();
+        System.out.print("Enter Bid date: ");
+        String bidDate = scanner.next();
+
+        Bid newBid = new Bid(Utils.nextID(), newClient, bidPrice, bidDate);
+        cars.get(0).addBid(newClient, bidPrice, bidDate);
+
+
     }
 
     public void displayCar() {
@@ -41,9 +74,7 @@ public class CarAuction {
             // Display clients and bids
             System.out.print("Bids :\n");
             for (Bid item : cars.get(i).getBids()) {
-                System.out.print("bidID = {" + item.getBidId() + "}, Clients = {clientsID= " + item.getClient().getClientId()
-                        + ", first Names= '" + item.getClient().getFirstName() + "', last Names = " + item.getClient().getLastName() +
-                        "'} price = " + item.getPrice() + ", date = " + item.getBidDate() + "}\n");
+                System.out.print("bidID = {" + item.getBidId() + "}, Clients = {" + item.getClient().description() + "} ,{price = " + item.getPrice() + "}, {date = " + item.getBidDate() + "}\n");
 
             }
             System.out.println(" ");
