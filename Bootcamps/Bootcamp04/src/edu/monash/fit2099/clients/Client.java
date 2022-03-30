@@ -27,7 +27,7 @@ public class Client {
 
     //Accessors
     public String description(){
-        return (clientId + " " + firstName + " " + lastName);
+        return ("ID:" + clientId + " ,First Name:" + firstName + " ,Last Name: " + lastName);
     }
 
 }

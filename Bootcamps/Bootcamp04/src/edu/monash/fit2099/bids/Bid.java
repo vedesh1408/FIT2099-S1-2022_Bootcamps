@@ -3,7 +3,6 @@ package edu.monash.fit2099.bids;
 public class Bid {
 
     private int bidId;
-
     private double price;
     private String bidDate;
     private int clientId;
@@ -30,7 +29,7 @@ public class Bid {
     }
 
     public void setClient(int client) {
-        this.client = client;
+        this.clientId = client;
     }
 
     public double getPrice() {

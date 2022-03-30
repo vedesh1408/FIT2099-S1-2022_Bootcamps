@@ -10,6 +10,7 @@ abstract public class Vehicle {
     private String model;
     private int modelYear;
     private int vehicleId;
+
     // instance of BidManager
     BidsManager bitMan1;
 
@@ -32,8 +33,12 @@ abstract public class Vehicle {
 
     public String description(){
 
-        return ("MY" + modelYear + " " + make + " " + model);
+        return ("MY" + modelYear + " ,Make:" + make + " ,Model:" + model + " ,Vehicle ID:" + vehicleId);
 
+    }
+
+    public int getVehicleId(){
+        return vehicleId;
     }
 
     //Task 6
@@ -45,6 +50,10 @@ abstract public class Vehicle {
 //    public ArrayList<edu.monash.fit2099.bids.Bid> getBids(){
 //        return bids;
 //    }
+
+    public void addBid(int clientId, double bidPrice, String bidDate){
+        bitMan1.addBit(clientId,bidPrice,bidDate);
+    }
 
 
 }
