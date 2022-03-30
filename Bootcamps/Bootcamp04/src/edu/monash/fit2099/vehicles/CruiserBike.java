@@ -1,4 +1,6 @@
-public class CruiserBike extends Vehicle{
+package edu.monash.fit2099.vehicles;
+
+public class CruiserBike extends Vehicle {
     private CruiseBikeType type;
 
     public CruiserBike(String newMake, String newModel, int newModelYear, CruiseBikeType newType) {

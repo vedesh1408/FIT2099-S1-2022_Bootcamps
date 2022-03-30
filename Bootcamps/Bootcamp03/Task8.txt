@@ -1,4 +1,4 @@
-1. In the CarAuction class, a method clientList which contain 3 nested for loops must be created
+1. In the edu.monash.fit2099.CarAuction class, a method clientList which contain 3 nested for loops must be created
 
 2. Before the 1st loop, an arraylist with integer data type is created. The arraylist will be used to store all clientIds which
    have already been printed out.

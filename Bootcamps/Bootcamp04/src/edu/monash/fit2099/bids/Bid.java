@@ -1,3 +1,5 @@
+package edu.monash.fit2099.bids;
+
 public class Bid {
 
     private int bidId;

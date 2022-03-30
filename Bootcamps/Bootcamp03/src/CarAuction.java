@@ -26,13 +26,13 @@ public class CarAuction {
         Car cr3 = (new Car("Chevrolet", "Corvette", 2020));
 
         // creating clients and bids
-//        Client c1 = new Client(Utils.nextID(), "Sam", "Johnson");
-//        Client c2 = new Client(Utils.nextID(), "Robert", "Jones");
-//        Client c3 = new Client(Utils.nextID(), "John", "Doe");
+//        edu.monash.fit2099.clients.Client c1 = new edu.monash.fit2099.clients.Client(edu.monash.fit2099.Utils.nextID(), "Sam", "Johnson");
+//        edu.monash.fit2099.clients.Client c2 = new edu.monash.fit2099.clients.Client(edu.monash.fit2099.Utils.nextID(), "Robert", "Jones");
+//        edu.monash.fit2099.clients.Client c3 = new edu.monash.fit2099.clients.Client(edu.monash.fit2099.Utils.nextID(), "John", "Doe");
 //
-//        Bid b1 = new Bid(Utils.nextID(), c1, 100000, "20/03/2022");
-//        Bid b2 = new Bid(Utils.nextID(), c2, 100250, "24/03/2022");
-//        Bid b3 = new Bid(Utils.nextID(), c3, 101250, "18/03/2022");
+//        edu.monash.fit2099.bids.Bid b1 = new edu.monash.fit2099.bids.Bid(edu.monash.fit2099.Utils.nextID(), c1, 100000, "20/03/2022");
+//        edu.monash.fit2099.bids.Bid b2 = new edu.monash.fit2099.bids.Bid(edu.monash.fit2099.Utils.nextID(), c2, 100250, "24/03/2022");
+//        edu.monash.fit2099.bids.Bid b3 = new edu.monash.fit2099.bids.Bid(edu.monash.fit2099.Utils.nextID(), c3, 101250, "18/03/2022");
 //
 //        cr1.addBid(c1, b1.getPrice(), b1.getBidDate());
 //        cr1.addBid(c2, b2.getPrice(), b2.getBidDate());
@@ -47,18 +47,18 @@ public class CarAuction {
         cars.add(cr3);
 
         Scanner scanner = new  Scanner(System.in);
-        System.out.print("Enter Client First Name: ");
+        System.out.print("Enter edu.monash.fit2099.clients.Client First Name: ");
         String cFirstName = scanner.next();
-        System.out.print("Enter Client Last Name: ");
+        System.out.print("Enter edu.monash.fit2099.clients.Client Last Name: ");
         String cLastName = scanner.next();
-        System.out.print("Enter Client ID: ");
+        System.out.print("Enter edu.monash.fit2099.clients.Client ID: ");
         int cId = scanner.nextInt();
 
         Client newClient = new Client(cId, cFirstName, cLastName);
 
-        System.out.print("Enter Bid price: ");
+        System.out.print("Enter edu.monash.fit2099.bids.Bid price: ");
         double bidPrice = scanner.nextDouble();
-        System.out.print("Enter Bid date: ");
+        System.out.print("Enter edu.monash.fit2099.bids.Bid date: ");
         String bidDate = scanner.next();
 
         Bid newBid = new Bid(Utils.nextID(), newClient, bidPrice, bidDate);

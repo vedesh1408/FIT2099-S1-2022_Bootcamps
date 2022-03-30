@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+package edu.monash.fit2099.vehicles;
+
+import edu.monash.fit2099.bids.BidsManager;
+import edu.monash.fit2099.Utils;
 
 abstract public class Vehicle {
 
@@ -34,12 +37,12 @@ abstract public class Vehicle {
     }
 
     //Task 6
-//    public void addBid(Client newClient, double price, String date) {
-//        Bid carBid = new Bid(Utils.nextID(), newClient, price, date);
+//    public void addBid(edu.monash.fit2099.clients.Client newClient, double price, String date) {
+//        edu.monash.fit2099.bids.Bid carBid = new edu.monash.fit2099.bids.Bid(edu.monash.fit2099.Utils.nextID(), newClient, price, date);
 //        bids.add(carBid);
 //
 //    }
-//    public ArrayList<Bid> getBids(){
+//    public ArrayList<edu.monash.fit2099.bids.Bid> getBids(){
 //        return bids;
 //    }
 

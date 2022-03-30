@@ -1,3 +1,5 @@
+package edu.monash.fit2099.clients;
+
 public class Client {
     private int clientId;
     private String firstName;

@@ -1,4 +1,8 @@
-public class SportCar extends Vehicle{
+package edu.monash.fit2099.vehicles;
+
+import edu.monash.fit2099.vehicles.Vehicle;
+
+public class SportCar extends Vehicle {
     private int seats;
     boolean isConvertible;
 
