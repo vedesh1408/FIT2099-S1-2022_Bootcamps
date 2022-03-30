@@ -7,9 +7,9 @@ abstract public class Vehicle {
     private String model;
     private int modelYear;
     private int vehicleId;
+    // instance of BidManager
+    BidsManager bitMan1;
 
-
-    ArrayList<Bid> bids = new ArrayList<Bid>();
 
 
     //Constructor
@@ -34,14 +34,14 @@ abstract public class Vehicle {
     }
 
     //Task 6
-    public void addBid(Client newClient, double price, String date) {
-        Bid carBid = new Bid(Utils.nextID(), newClient, price, date);
-        bids.add(carBid);
-    }
-
-    public ArrayList<Bid> getBids(){
-        return bids;
-    }
+//    public void addBid(Client newClient, double price, String date) {
+//        Bid carBid = new Bid(Utils.nextID(), newClient, price, date);
+//        bids.add(carBid);
+//
+//    }
+//    public ArrayList<Bid> getBids(){
+//        return bids;
+//    }
 
 
 }

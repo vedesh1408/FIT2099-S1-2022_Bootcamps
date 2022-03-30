@@ -1,14 +1,15 @@
 public class Bid {
 
     private int bidId;
-    private Client client;
+
     private double price;
     private String bidDate;
+    private int clientId;
 
     // Constructors
-    public Bid(int bidId, Client client, double price, String bidDate) {
+    public Bid(int bidId, int client, double price, String bidDate) {
         this.bidId = bidId;
-        this.client = client;
+        this.clientId = client;
         this.price = price;
         this.bidDate = bidDate;
     }
@@ -22,11 +23,11 @@ public class Bid {
         this.bidId = bidId;
     }
 
-    public Client getClient() {
-        return client;
+    public int getClient() {
+        return clientId;
     }
 
-    public void setClient(Client client) {
+    public void setClient(int client) {
         this.client = client;
     }
 
