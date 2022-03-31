@@ -16,6 +16,9 @@ public class CarAuction {
     ArrayList<Client> clientArrayList = new ArrayList<>();
 
     public void printStatus() {
+        int choice;
+        Scanner myObj = new Scanner(System.in);
+        String ans = "Y";
         System.out.println("Welcome to FIT2099 Car Auction Systems");
         System.out.println(" ");
 
@@ -26,7 +29,34 @@ public class CarAuction {
         //Task 4
         //createCars();
         //displayCar();
+
+        do {
+            choice = selectionMenu();
+            if (choice == 1) {
+                createSportCar();
+            } else if (choice == 2) {
+                createCruiseBike();
+            } else if (choice == 3) {
+                displayFleet();
+            } else if (choice == 4) {
+                createClient();
+            } else if (choice == 5) {
+                displayClients();
+            } else if (choice == 6) {
+                createBid();
+            } else if (choice == 7) {
+                return;
+            } else {
+                System.out.println("Invalid choice number");
+                return;
+            }
+            System.out.println("Do you want to continue? Y/N");
+            ans = myObj.next();
+        } while (ans.equals("Y"));
+
+
         System.out.println("Thank you for visiting FIT2099 Car Auction System");
+
     }
 
     //Task 4
@@ -169,13 +199,34 @@ public class CarAuction {
     public void displayFleet() {
 
         for (int i = 0; i < vehicles.size(); i++) {
-            System.out.println((i + 1) + "Vehicle description: " + vehicles.get(i).description());
+            System.out.println((i + 1) + ". Vehicle description: " + vehicles.get(i).description());
         }
     }
 
     public void displayClients() {
         for (int i = 0; i < clientArrayList.size(); i++) {
-            System.out.println((i + 1) + "Client Description: " + clientArrayList.get(i).description());
+            System.out.println((i + 1) + ". Client Description: " + clientArrayList.get(i).description());
         }
+    }
+
+    public static int selectionMenu() {
+
+        System.out.println("+---------------------------------+");
+        System.out.println("|       Welcome to Bootcamp       |");
+        System.out.println("|              Week 4             |");
+        System.out.println("+---------------------------------+\n");
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        System.out.println("1) New Sport Car");
+        System.out.println("2) New Cruiser Bike");
+        System.out.println("3) Display Fleet");
+        System.out.println("4) Add Client");
+        System.out.println("5) List Clients");
+        System.out.println("6) Add Bid");
+        System.out.println("7) Exit");
+        System.out.print("Select an option: ");
+        choice = sc.nextInt();
+        return choice;
+
     }
 }
