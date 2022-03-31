@@ -12,9 +12,7 @@ abstract public class Vehicle {
     private int vehicleId;
 
     // instance of BidManager
-    BidsManager bitMan1;
-
-
+    BidsManager bitMan1 = new BidsManager();
 
     //Constructor
     public Vehicle(String newMake, String newModel, int newModelYear){
@@ -52,7 +50,7 @@ abstract public class Vehicle {
 //    }
 
     public void addBid(int clientId, double bidPrice, String bidDate){
-        bitMan1.addBit(clientId,bidPrice,bidDate);
+        bitMan1.addBid(clientId,bidPrice,bidDate);
     }
 
 

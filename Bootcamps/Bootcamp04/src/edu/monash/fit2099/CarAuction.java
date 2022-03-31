@@ -8,6 +8,7 @@ import edu.monash.fit2099.vehicles.SportCar;
 import edu.monash.fit2099.vehicles.Vehicle;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class CarAuction {
@@ -21,7 +22,10 @@ public class CarAuction {
         String ans = "Y";
         System.out.println("Welcome to FIT2099 Car Auction Systems");
         System.out.println(" ");
-
+        System.out.println("+---------------------------------+");
+        System.out.println("|       Welcome to Bootcamp       |");
+        System.out.println("|              Week 4             |");
+        System.out.println("+---------------------------------+\n");
         // Testing Task 3
         //Car c1 = new Car ("Audi", "TT",2014);
         //System.out.println(c1.description());
@@ -45,13 +49,14 @@ public class CarAuction {
             } else if (choice == 6) {
                 createBid();
             } else if (choice == 7) {
-                return;
+                System.exit(0);
             } else {
                 System.out.println("Invalid choice number");
                 return;
             }
             System.out.println("Do you want to continue? Y/N");
             ans = myObj.next();
+            ans = ans.toUpperCase();
         } while (ans.equals("Y"));
 
 
@@ -211,12 +216,9 @@ public class CarAuction {
 
     public static int selectionMenu() {
 
-        System.out.println("+---------------------------------+");
-        System.out.println("|       Welcome to Bootcamp       |");
-        System.out.println("|              Week 4             |");
-        System.out.println("+---------------------------------+\n");
         Scanner sc = new Scanner(System.in);
         int choice;
+        System.out.println("---------------------");
         System.out.println("1) New Sport Car");
         System.out.println("2) New Cruiser Bike");
         System.out.println("3) Display Fleet");
