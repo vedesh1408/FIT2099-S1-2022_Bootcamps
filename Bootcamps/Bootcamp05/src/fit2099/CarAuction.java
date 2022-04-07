@@ -7,12 +7,22 @@ import fit2099.vehicles.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * @author vedes
+ * @version 1.0
+ * @see "Auction of different vehicles"
+ */
 public class CarAuction {
     //Car Data type Array
     ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
     ArrayList<Client> clientArrayList = new ArrayList<>();
     TaxableVehicle theVehicleObject;
 
+    /**
+     * i/0 for user to select choices
+     *
+     * @throws Exception
+     */
     public void printStatus() throws Exception {
         int choice;
         Scanner myObj = new Scanner(System.in);
@@ -56,7 +66,11 @@ public class CarAuction {
 
     }
 
-
+    /**
+     * method to create a new sport car
+     *
+     * @throws Exception
+     */
     public void createSportCar() throws Exception {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter car maker: ");
@@ -74,14 +88,17 @@ public class CarAuction {
             SportCar sportCar = new SportCar(cMaker, cModel, cYear, cSeats, cConvertible);
             vehicles.add(sportCar);
             System.out.println(sportCar);
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("error has occured");
         }
 
     }
 
+    /**
+     * create a new Chopper Bike
+     *
+     * @throws Exception
+     */
     public void createChopperBike() throws Exception {
 
         Scanner scanner = new Scanner(System.in);
@@ -95,15 +112,18 @@ public class CarAuction {
             ChopperBike chopperBike = new ChopperBike(cMaker, cModel, cYear);
             vehicles.add(chopperBike);
             System.out.println(chopperBike);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
 
     }
 
+    /**
+     * create a new bobber bike
+     *
+     * @throws Exception
+     */
     public void createBobberBike() throws Exception {
 
         Scanner scanner = new Scanner(System.in);
@@ -117,30 +137,33 @@ public class CarAuction {
             BobberBike bobberBike = new BobberBike(cMaker, cModel, cYear);
             vehicles.add(bobberBike);
             System.out.println(bobberBike);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
+    /**
+     * create a new client
+     */
     public void createClient() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Client First Name: ");
         String cFirstName = scanner.next();
         System.out.print("Enter Client Last Name: ");
         String cLastName = scanner.next();
-       try{
+        try {
 
-           Client client = Client.getInstance(cFirstName,cLastName);
-           clientArrayList.add(client);
-           System.out.println(client);
-       }
-       catch (Exception e){
-           System.out.println(e.getMessage());
-       }
+            Client client = Client.getInstance(cFirstName, cLastName);
+            clientArrayList.add(client);
+            System.out.println(client);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
+    /**
+     * create a new bid
+     */
     public void createBid() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter vehicle ID: ");
@@ -157,9 +180,33 @@ public class CarAuction {
                 vehicle.addBid(cLID, cPrice, bidDate);
             }
         }
+        for (int i = 0; i < vehicles.size(); i++) {
+            if (cID == vehicles.get(i).getVehicleId()) {
+                if (TaxationManager.getInstance().getTaxableVehicles().contains(vehicles.get(i))) {
+                    if (vehicles.get(i) instanceof ChopperBike) {
+                        double Tax = ((ChopperBike) vehicles.get(i)).calculateTaxRate(cPrice);
+                        System.out.println("Bid for Vehicle: " + vehicles.get(i).getVehicleId() + "| MY" + vehicles.get(i).getModelYear() + "|" + vehicles.get(i).getMake() + "|" +
+                                vehicles.get(i).getMake() + "|{ buyerId =" + cLID + ", price=" + (cPrice - Tax) + ", date= " + bidDate + "} Price: " + (cPrice - Tax) + "Tax: " + Tax);
+                    } else if (vehicles.get(i) instanceof BobberBike) {
+                        System.out.println("Bid for Vehicle: " + vehicles.get(i).getVehicleId() + "| MY" + vehicles.get(i).getModelYear() + "|" + vehicles.get(i).getMake() + "|" +
+                                vehicles.get(i).getMake() + "|{ buyerId =" + cLID + ", price=" + (cPrice) + ", date= " + bidDate + "} Price: " + (cPrice) + "Tax: NO TAX");
 
+                    } else if (vehicles.get(i) instanceof SportCar) {
+                        double Tax = ((SportCar) vehicles.get(i)).calculateTaxRate(cPrice);
+                        System.out.println("Bid for Vehicle: " + vehicles.get(i).getVehicleId() + "| MY" + vehicles.get(i).getModelYear() + "|" + vehicles.get(i).getMake() + "|" +
+                                vehicles.get(i).getMake() + "|{ buyerId =" + cLID + ", price=" + (cPrice - Tax) + ", date= " + bidDate + "} Price: " + (cPrice - Tax) + "Tax: " + Tax);
+                    }
+
+                } else {
+                    System.out.println("Sorry try again! Vehicle not found");
+                }
+            }
+        }
     }
 
+    /**
+     * display fleet
+     */
     public void displayFleet() {
 
         for (int i = 0; i < vehicles.size(); i++) {
@@ -167,12 +214,20 @@ public class CarAuction {
         }
     }
 
+    /**
+     * display new clients
+     */
     public void displayClients() {
         for (int i = 0; i < clientArrayList.size(); i++) {
             System.out.println((i + 1) + ". Client Description: " + clientArrayList.get(i).description());
         }
     }
 
+    /**
+     * display a selection menu for the user to choose from
+     *
+     * @return the choice of the user from the list provided
+     */
     public static int selectionMenu() {
 
         Scanner sc = new Scanner(System.in);
