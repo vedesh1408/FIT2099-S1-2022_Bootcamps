@@ -12,20 +12,21 @@ abstract public class Vehicle {
     private int vehicleId;
 
     // instance of BidManager
-    BidsManager bitMan1 = new BidsManager();
+    BidsManager bitMan1;
 
     //Constructor
-    public Vehicle(String newMake, String newModel, int newModelYear){
-        this.make = newMake;
-        this.model=newModel;
-        this.modelYear=newModelYear;
+    public Vehicle(String newMake, String newModel, int newModelYear) throws Exception{
+        setMaker(newMake);
+        setModel(newModel);
+        setYear(newModelYear);
         this.vehicleId = Utils.nextID();
-    }
-    public Vehicle(String newMake, String newModel, int newModelYear, int newVehicleId){
-        this.make = newMake;
-        this.model=newModel;
-        this.modelYear=newModelYear;
-        this.vehicleId = newVehicleId;
+
+        if (setMaker(newMake) && setModel(newModel) && setYear((newModelYear))) {
+            bitMan1 = new BidsManager();
+            this.vehicleId = Utils.nextID();
+        } else {
+            throw new Exception("Incorrect Vehicle's Maker, Model or Make/Model Year ");
+        }
     }
     //Methods
 
@@ -44,5 +45,31 @@ abstract public class Vehicle {
         bitMan1.addBid(clientId,bidPrice,bidDate);
     }
 
+    public boolean setYear(int newYear){
+        boolean isValid = false;
+        if (newYear >1000) {
+            isValid = true;
+            modelYear = newYear;
+        }
+        return isValid;
+    }
+
+    public boolean setMaker(String newMaker){
+        boolean isValid = false;
+        if (newMaker.length()>= 3 && newMaker.length()<=15) {
+            isValid = true;
+            make= newMaker;
+        }
+        return isValid;
+    }
+
+    public boolean setModel(String newModel){
+        boolean isValid = false;
+        if (newModel.length()>= 3 && newModel.length()<=15) {
+            isValid = true;
+            model= newModel;
+        }
+        return isValid;
+    }
 
 }

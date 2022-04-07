@@ -4,18 +4,24 @@ public class SportCar extends Vehicle implements TaxableVehicle{
     private int seats;
     boolean isConvertible;
 
-    public SportCar(String newMake, String newModel, int newModelYear, int newSeats, boolean newIsConvertible) {
+    public SportCar(String newMake, String newModel, int newModelYear, int newSeats, boolean newIsConvertible) throws Exception {
         super(newMake, newModel, newModelYear);
-        this.seats = newSeats;
+        setSeats(newSeats);
         this.isConvertible = newIsConvertible;
         this.addToTaxationManager();
+
+
     }
 
-    public SportCar(String newMake, String newModel, int newModelYear, int newVehicleId, int newSeats, boolean newIsConvertible) {
-        super(newMake, newModel, newModelYear, newVehicleId);
-        this.seats = newSeats;
-        this.isConvertible = newIsConvertible;
-        this.addToTaxationManager();
+
+
+    public boolean setSeats(int newSeats){
+        boolean isValid = false;
+        if (newSeats >=2 && newSeats <= 5) {
+            isValid = true;
+            seats = newSeats;
+        }
+        return isValid;
     }
 
     @Override

@@ -1,10 +1,8 @@
 package fit2099;
 
 import fit2099.clients.Client;
-import fit2099.vehicles.BobberBike;
-import fit2099.vehicles.ChopperBike;
-import fit2099.vehicles.SportCar;
-import fit2099.vehicles.Vehicle;
+import fit2099.taxation.TaxationManager;
+import fit2099.vehicles.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,8 +11,9 @@ public class CarAuction {
     //Car Data type Array
     ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
     ArrayList<Client> clientArrayList = new ArrayList<>();
+    TaxableVehicle theVehicleObject;
 
-    public void printStatus() {
+    public void printStatus() throws Exception {
         int choice;
         Scanner myObj = new Scanner(System.in);
         String ans = "Y";
@@ -30,16 +29,18 @@ public class CarAuction {
             if (choice == 1) {
                 createSportCar();
             } else if (choice == 2) {
-                createCruiseBike();
+                createChopperBike();
             } else if (choice == 3) {
-                displayFleet();
+                createBobberBike();
             } else if (choice == 4) {
-                createClient();
+                displayFleet();
             } else if (choice == 5) {
-                displayClients();
+                createClient();
             } else if (choice == 6) {
-                createBid();
+                displayClients();
             } else if (choice == 7) {
+                createBid();
+            } else if (choice == 8) {
                 System.exit(0);
             } else {
                 System.out.println("Invalid choice number");
@@ -56,8 +57,7 @@ public class CarAuction {
     }
 
 
-
-    public void createSportCar() {
+    public void createSportCar() throws Exception {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter car maker: ");
         String cMaker = scanner.next();
@@ -69,11 +69,20 @@ public class CarAuction {
         int cSeats = scanner.nextInt();
         System.out.print("Is the car convertible: ");
         boolean cConvertible = scanner.nextBoolean();
-        SportCar sportCar = new SportCar(cMaker, cModel, cYear, cSeats, cConvertible);
-        vehicles.add(sportCar);
+
+        try {
+            SportCar sportCar = new SportCar(cMaker, cModel, cYear, cSeats, cConvertible);
+            vehicles.add(sportCar);
+            System.out.println(sportCar);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
     }
 
-    public void createCruiseBike() {
+    public void createChopperBike() throws Exception {
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter bike maker: ");
@@ -82,20 +91,37 @@ public class CarAuction {
         String cModel = scanner.next();
         System.out.print("Enter bike model year: ");
         int cYear = scanner.nextInt();
-        System.out.print("Enter type: ");
-        String type = scanner.next();
-
-        if (type.equals("CHOPPER")) {
-            ChopperBike chopperBike = new ChopperBike(cMaker,cModel,cYear);
+        try {
+            ChopperBike chopperBike = new ChopperBike(cMaker, cModel, cYear);
             vehicles.add(chopperBike);
-        } else if (type.equals("BOBBER")) {
-            BobberBike bobberBike = new BobberBike(cMaker,cModel,cYear);
-            vehicles.add(bobberBike);
-        } else {
-            System.out.println("Invalid type");
-            return;
+            System.out.println(chopperBike);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
         }
 
+
+    }
+
+    public void createBobberBike() throws Exception {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter bike maker: ");
+        String cMaker = scanner.next();
+        System.out.print("Enter bike model: ");
+        String cModel = scanner.next();
+        System.out.print("Enter bike model year: ");
+        int cYear = scanner.nextInt();
+        try {
+            BobberBike bobberBike = new BobberBike(cMaker, cModel, cYear);
+            vehicles.add(bobberBike);
+            System.out.println(bobberBike);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void createClient() {
@@ -104,10 +130,15 @@ public class CarAuction {
         String cFirstName = scanner.next();
         System.out.print("Enter Client Last Name: ");
         String cLastName = scanner.next();
-        System.out.print("Enter Client ID: ");
-        int cId = scanner.nextInt();
-        Client client = new Client(cId, cFirstName, cLastName);
-        clientArrayList.add(client);
+       try{
+
+           Client client = Client.getInstance(cFirstName,cLastName);
+           clientArrayList.add(client);
+           System.out.println(client);
+       }
+       catch (Exception e){
+           System.out.println(e.getMessage());
+       }
     }
 
     public void createBid() {
@@ -125,7 +156,6 @@ public class CarAuction {
             if (cID == vehicle.getVehicleId()) {
                 vehicle.addBid(cLID, cPrice, bidDate);
             }
-
         }
 
     }
@@ -149,12 +179,13 @@ public class CarAuction {
         int choice;
         System.out.println("---------------------");
         System.out.println("1) New Sport Car");
-        System.out.println("2) New Cruiser Bike");
-        System.out.println("3) Display Fleet");
-        System.out.println("4) Add Client");
-        System.out.println("5) List Clients");
-        System.out.println("6) Add Bid");
-        System.out.println("7) Exit");
+        System.out.println("2) New Chopper Bike");
+        System.out.println("3) New Bobber Bike");
+        System.out.println("4) Display Fleet");
+        System.out.println("5) Add Client");
+        System.out.println("6) List Clients");
+        System.out.println("7) Add Bid");
+        System.out.println("8) Exit");
         System.out.print("Select an option: ");
         choice = sc.nextInt();
         return choice;
