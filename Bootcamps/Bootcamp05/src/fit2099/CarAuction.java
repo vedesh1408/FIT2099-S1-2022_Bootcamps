@@ -1,14 +1,12 @@
-package edu.monash.fit2099;
+package fit2099;
 
-import edu.monash.fit2099.bids.Bid;
-import edu.monash.fit2099.clients.Client;
-import edu.monash.fit2099.vehicles.CruiseBikeType;
-import edu.monash.fit2099.vehicles.CruiserBike;
-import edu.monash.fit2099.vehicles.SportCar;
-import edu.monash.fit2099.vehicles.Vehicle;
+import fit2099.clients.Client;
+import fit2099.vehicles.BobberBike;
+import fit2099.vehicles.ChopperBike;
+import fit2099.vehicles.SportCar;
+import fit2099.vehicles.Vehicle;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class CarAuction {
@@ -24,15 +22,8 @@ public class CarAuction {
         System.out.println(" ");
         System.out.println("+---------------------------------+");
         System.out.println("|       Welcome to Bootcamp       |");
-        System.out.println("|              Week 4             |");
+        System.out.println("|              Week 5             |");
         System.out.println("+---------------------------------+\n");
-        // Testing Task 3
-        //Car c1 = new Car ("Audi", "TT",2014);
-        //System.out.println(c1.description());
-
-        //Task 4
-        //createCars();
-        //displayCar();
 
         do {
             choice = selectionMenu();
@@ -83,7 +74,7 @@ public class CarAuction {
     }
 
     public void createCruiseBike() {
-        CruiseBikeType cType;
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter bike maker: ");
         String cMaker = scanner.next();
@@ -95,15 +86,16 @@ public class CarAuction {
         String type = scanner.next();
 
         if (type.equals("CHOPPER")) {
-            cType = CruiseBikeType.CHOPPER;
+            ChopperBike chopperBike = new ChopperBike(cMaker,cModel,cYear);
+            vehicles.add(chopperBike);
         } else if (type.equals("BOBBER")) {
-            cType = CruiseBikeType.BOBBER;
+            BobberBike bobberBike = new BobberBike(cMaker,cModel,cYear);
+            vehicles.add(bobberBike);
         } else {
             System.out.println("Invalid type");
             return;
         }
-        CruiserBike cruiserBike = new CruiserBike(cMaker, cModel, cYear, cType);
-        vehicles.add(cruiserBike);
+
     }
 
     public void createClient() {
@@ -129,9 +121,9 @@ public class CarAuction {
         System.out.print("Enter Bid date: ");
         String bidDate = scanner.next();
 
-        for (int i = 0; i < vehicles.size(); i++) {
-            if (cID == vehicles.get(i).getVehicleId()) {
-                vehicles.get(i).addBid(cLID, cPrice, bidDate);
+        for (Vehicle vehicle : vehicles) {
+            if (cID == vehicle.getVehicleId()) {
+                vehicle.addBid(cLID, cPrice, bidDate);
             }
 
         }
