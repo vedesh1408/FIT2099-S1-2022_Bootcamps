@@ -8,12 +8,14 @@ public class SportCar extends Vehicle implements TaxableVehicle{
         super(newMake, newModel, newModelYear);
         this.seats = newSeats;
         this.isConvertible = newIsConvertible;
+        this.addToTaxationManager();
     }
 
     public SportCar(String newMake, String newModel, int newModelYear, int newVehicleId, int newSeats, boolean newIsConvertible) {
         super(newMake, newModel, newModelYear, newVehicleId);
         this.seats = newSeats;
         this.isConvertible = newIsConvertible;
+        this.addToTaxationManager();
     }
 
     @Override
